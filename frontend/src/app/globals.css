@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-luxury-black: #000000;
+  --color-luxury-white: #FFFFFF;
+  --color-luxury-soft-gray: #F5F5F5;
+  --color-luxury-dark-gray: #1A1A1A;
+
+  --color-admin-bg: #0B0B0B;
+  --color-admin-sidebar: #111111;
+  --color-admin-card: #111111;
+  --color-admin-border: #1F1F1F;
+  --color-admin-accent: #6366F1;
+  
+  --font-outfit: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: #000000;
+  background: #FFFFFF;
+  font-family: var(--font-inter), system-ui;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Luxury UI Utilities */
+@utility btn-luxury {
+  @apply px-10 py-4 bg-black text-white font-medium uppercase tracking-[0.2em] text-[10px] transition-all duration-500 hover:bg-[#1A1A1A] hover:scale-[1.02] active:scale-95 rounded-none;
+}
+
+@utility btn-luxury-outline {
+  @apply px-10 py-4 border border-black text-black font-medium uppercase tracking-[0.2em] text-[10px] transition-all duration-500 hover:bg-black hover:text-white rounded-none;
+}
+
+@utility card-luxury {
+  @apply bg-white rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-neutral-100 hover:border-neutral-300 transition-all duration-700 overflow-hidden;
+}
+
+@utility section-spacing {
+  @apply py-32 md:py-48;
+}
+
+@utility container-premium {
+  @apply max-w-7xl mx-auto px-10 md:px-20;
+}
+
+.luxury-gradient {
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+}
+
+.silver-text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500;
+}
+
+.fade-up {
+  @apply transform translate-y-10 opacity-0 animate-[fadeUp_1s_ease-out_forwards];
+}
+@utility admin-card {
+  @apply bg-admin-card border border-admin-border rounded-xl shadow-lg hover:shadow-admin-accent/20 transition-all duration-500 overflow-hidden;
+}
+
+@utility admin-glow {
+  @apply shadow-[0_0_20px_rgba(99,102,241,0.1)];
+}
+
+@utility admin-glass {
+  @apply bg-admin-bg/60 backdrop-blur-xl border border-white/5;
+}
+
+.admin-active-link {
+  @apply bg-admin-accent/10 text-admin-accent border-r-4 border-admin-accent font-bold;
+}
+
+@keyframes fadeUp {
+  to { transform: translateY(0); opacity: 1; }
+}
