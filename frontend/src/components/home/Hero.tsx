@@ -28,11 +28,11 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-            <Link href="/products/frames" className="btn-luxury group flex items-center gap-4">
+            <Link href="/products/frames" className="btn-luxury group flex items-center gap-4 cursor-pointer">
               <span>Shop Now</span>
               <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
             </Link>
-            <Link href="/" className="text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black pb-2 hover:text-neutral-500 hover:border-neutral-500 transition-all">
+            <Link href="/products/frames" className="text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black pb-2 hover:text-neutral-500 hover:border-neutral-500 transition-all">
               Explore Collection
             </Link>
           </div>
@@ -46,7 +46,7 @@ const Hero = () => {
         className="absolute top-1/4 -left-20 w-[500px] h-[500px] opacity-40 hidden xl:block"
       >
         <div className="w-full h-full bg-neutral-100 rounded-[5rem] rotate-12 overflow-hidden border border-neutral-200 p-1">
-           <img src="/assets/images/hero.png" className="w-full h-full object-cover rounded-[4.5rem]" />
+           <img src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover rounded-[4.5rem]" />
         </div>
       </motion.div>
 
@@ -56,7 +56,7 @@ const Hero = () => {
         className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] opacity-30 hidden xl:block"
       >
         <div className="w-full h-full bg-neutral-50 rounded-[4rem] -rotate-6 overflow-hidden border border-neutral-100 p-1">
-           <img src="/assets/images/cat-frames.png" className="w-full h-full object-cover rounded-[3.5rem]" />
+           <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover rounded-[3.5rem]" />
         </div>
       </motion.div>
 

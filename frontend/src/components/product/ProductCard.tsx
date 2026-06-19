@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Plus } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import { MessageCircle } from "lucide-react";
 
 interface ProductCardProps {
   product: {
@@ -17,56 +16,51 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { addToCart } = useCart();
+
+  const handleWhatsAppOrder = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const phoneNumber = "919999999999";
+    const text = `Hello, I would like to order the following:\n\n*Product*: ${product.name}\n*Price*: ₹${product.startingPrice}\n\nPlease let me know how to proceed with payment and delivery.`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col items-center text-center space-y-6 p-8 bg-neutral-50 hover:bg-white transition-colors duration-700 rounded-2xl border border-neutral-100/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+      className="group relative flex flex-col justify-between items-center text-center p-8 bg-neutral-50 hover:bg-white transition-all duration-700 rounded-2xl border border-neutral-100/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 h-full"
     >
-      <Link href={`/product/${product._id}`} className="w-full">
-        <div className="aspect-[4/5] w-full overflow-hidden bg-white rounded-xl mb-8 flex items-center justify-center p-12">
+      <Link href={`/product/${product._id}`} className="w-full flex-grow flex flex-col">
+        <div className="aspect-[4/5] w-full overflow-hidden bg-white rounded-xl mb-6 flex items-center justify-center p-8 relative flex-shrink-0">
           <motion.img 
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            src={product.images?.[0]?.url || product.image || "https://placehold.co/400x500"} 
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            src={product.images?.[0]?.url || product.image || "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop"} 
             alt={product.name} 
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700"
           />
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-2 flex-grow flex flex-col justify-start">
            <p className="text-[9px] uppercase tracking-[0.4em] font-bold text-neutral-400">Curated Collection</p>
-           <h3 className="text-xl font-outfit font-bold tracking-tighter text-black">{product.name}</h3>
-           <p className="text-[10px] text-neutral-500 font-light max-w-[200px] mx-auto line-clamp-1">{product.description || "Handcrafted with premium materials for timeless beauty."}</p>
+           <h3 className="text-lg font-outfit font-bold tracking-tighter text-black leading-tight mb-1">{product.name}</h3>
+           <p className="text-[10px] text-neutral-500 font-light max-w-[200px] mx-auto line-clamp-2 leading-relaxed">{product.description || "Handcrafted with premium materials for timeless beauty."}</p>
         </div>
       </Link>
 
-      <div className="flex items-center justify-center gap-4 w-full">
-         <span className="text-sm font-bold tracking-tighter">FROM ₹{product.startingPrice}</span>
-         <div className="w-px h-4 bg-neutral-200" />
+      <div className="flex flex-col items-center gap-4 w-full mt-6 pt-4 border-t border-neutral-100/50">
+         <span className="text-xs uppercase tracking-widest text-neutral-400 font-medium">From <span className="text-sm font-bold tracking-tighter text-black font-outfit">₹{product.startingPrice}</span></span>
          <button 
-           onClick={() => addToCart({ 
-             product: product._id, 
-             name: product.name, 
-             image: product.images?.[0]?.url || product.image, 
-             price: product.startingPrice, 
-             qty: 1, 
-             size: "Standard" 
-           })}
-           className="text-[10px] uppercase tracking-[0.3em] font-bold hover:text-neutral-400 transition-colors flex items-center gap-1"
+           onClick={handleWhatsAppOrder}
+           className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all duration-300 py-3 px-4 rounded-xl font-outfit font-bold text-[10px] tracking-[0.15em] uppercase flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+           title="Order via WhatsApp"
          >
-           <Plus size={14} strokeWidth={3} /> ADD
+           <MessageCircle size={14} className="fill-white stroke-none" />
+           <span>Order on WhatsApp</span>
          </button>
-      </div>
-
-      {/* Quick View Overlay (Visual Only) */}
-      <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-         <div className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-            <Plus size={20} strokeWidth={1} />
-         </div>
       </div>
     </motion.div>
   );

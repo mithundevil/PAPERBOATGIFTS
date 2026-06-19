@@ -5,6 +5,27 @@ import api from "@/utils/api";
 import { Star, Quote, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
+const fallbackFeedbacks = [
+  {
+    _id: "fb-1",
+    name: "Aanya Mehta",
+    rating: 5,
+    message: "The linen album is absolutely breath-taking. The packaging was so minimalist and beautiful, it made the perfect wedding gift."
+  },
+  {
+    _id: "fb-2",
+    name: "Kabir Sharma",
+    rating: 5,
+    message: "Ordering via WhatsApp was incredibly seamless. They guided me through custom design options for my Polaroid print box."
+  },
+  {
+    _id: "fb-3",
+    name: "Rohan Das",
+    rating: 5,
+    message: "I ordered three Gilded Edge Posters for my home gallery. The quality of paper and print is beyond exceptional."
+  }
+];
+
 const Testimonials = () => {
   const [feedbacks, setFeedbacks] = useState<any[]>([]);
 
@@ -12,15 +33,18 @@ const Testimonials = () => {
     const fetchFeedbacks = async () => {
       try {
         const { data: response } = await api.get("/feedback");
-        setFeedbacks(response.data);
+        if (response.data && response.data.length > 0) {
+          setFeedbacks(response.data);
+        } else {
+          setFeedbacks(fallbackFeedbacks);
+        }
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch feedbacks, loading fallback:", err);
+        setFeedbacks(fallbackFeedbacks);
       }
     };
     fetchFeedbacks();
   }, []);
-
-  if (feedbacks.length === 0) return null;
 
   return (
     <section className="py-32 bg-[#0B0B0B] border-y border-white/5 relative overflow-hidden">

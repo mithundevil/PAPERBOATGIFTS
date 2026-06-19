@@ -5,19 +5,30 @@ import { motion } from "framer-motion";
 import ProductCard from "@/components/product/ProductCard";
 import api from "@/utils/api";
 import Link from "next/link";
+import { sampleProducts } from "@/utils/sampleData";
 
 const BestSellers = () => {
   const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
     const fetch = async () => {
+      const fallbackProducts = [
+        sampleProducts.find((p) => p._id === "sample-frames-1"),
+        sampleProducts.find((p) => p._id === "sample-albums-1"),
+        sampleProducts.find((p) => p._id === "sample-mugs-1"),
+        sampleProducts.find((p) => p._id === "sample-polaroids-1"),
+      ].filter(Boolean);
+
       try {
         const { data: response } = await api.get("/products");
-        if (response.data && Array.isArray(response.data)) {
+        if (response.data && Array.isArray(response.data) && response.data.length > 0) {
           setProducts(response.data.slice(0, 4));
+        } else {
+          setProducts(fallbackProducts);
         }
       } catch (err) {
-        console.error(err);
+        console.error("API failed to fetch bestsellers, loading fallback:", err);
+        setProducts(fallbackProducts);
       }
     };
     fetch();

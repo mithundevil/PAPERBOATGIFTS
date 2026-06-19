@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-32 mt-auto">
+    <footer className="bg-black text-white py-16 mt-auto">
       <div className="container-premium">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
           <div className="space-y-8 md:col-span-1">
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-32 pt-10 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] uppercase tracking-[0.3em] text-neutral-600">
+        <div className="mt-16 pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] uppercase tracking-[0.3em] text-neutral-600">
           <p>© 2026 Paperboat Gifts. All Rights Reserved.</p>
           <div className="flex space-x-8">
             <span className="cursor-pointer hover:text-white">India</span>

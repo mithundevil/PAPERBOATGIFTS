@@ -6,6 +6,7 @@ import ProductCard from "@/components/product/ProductCard";
 import api from "@/utils/api";
 import { motion } from "framer-motion";
 import { ProductCardSkeleton } from "@/components/ui/Skeleton";
+import { sampleProducts } from "@/utils/sampleData";
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -15,11 +16,19 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetch = async () => {
       if (!category) return;
+      const fallbackData = sampleProducts.filter(
+        (p) => p.category === (Array.isArray(category) ? category[0] : category)
+      );
       try {
         const { data: response } = await api.get(`/products/category/${category}`);
-        setProducts(response.data);
+        if (response.data && response.data.length > 0) {
+          setProducts(response.data);
+        } else {
+          setProducts(fallbackData);
+        }
       } catch (err) {
         console.error(err);
+        setProducts(fallbackData);
       } finally {
         setLoading(false);
       }

@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const categories = [
-  { name: "Frames", type: "Classic Bespoke", image: "/assets/images/cat-frames.png", href: "/products/frames" },
-  { name: "Albums", type: "Timeless Stories", image: "/assets/images/cat-albums.png", href: "/products/albums" },
-  { name: "Mugs", type: "Daily Rituals", image: "/assets/images/cat-mugs.png", href: "/products/mugs" },
-  { name: "Polaroids", type: "Instant Memories", image: "/assets/images/cat-polaroids.png", href: "/products/polaroids" },
-  { name: "Posters", type: "Gallery Walls", image: "/assets/images/cat-posters.png", href: "/products/posters" },
+  { name: "Frames", type: "Classic Bespoke", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop", href: "/products/frames" },
+  { name: "Albums", type: "Timeless Stories", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop", href: "/products/albums" },
+  { name: "Mugs", type: "Daily Rituals", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=800&auto=format&fit=crop", href: "/products/mugs" },
+  { name: "Polaroids", type: "Instant Memories", image: "https://images.unsplash.com/photo-1610484826967-09c5720778c7?q=80&w=800&auto=format&fit=crop", href: "/products/polaroids" },
+  { name: "Posters", type: "Gallery Walls", image: "https://images.unsplash.com/photo-1580136608260-4eb11f4b24fe?q=80&w=800&auto=format&fit=crop", href: "/products/posters" },
 ];
 
 const CategoryGrid = () => {
@@ -30,7 +30,7 @@ const CategoryGrid = () => {
             <Link 
               href={cat.href} 
               key={idx} 
-              className={`group relative overflow-hidden h-[600px] ${idx === 0 || idx === 3 ? 'lg:col-span-2' : ''}`}
+              className={`group relative overflow-hidden h-[400px] ${idx === 0 || idx === 3 ? 'lg:col-span-2' : ''}`}
             >
               <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-black/40 transition-colors duration-700" />
               <img 

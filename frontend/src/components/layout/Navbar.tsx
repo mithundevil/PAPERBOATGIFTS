@@ -2,17 +2,15 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Search, User, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useCart } from "@/context/CartContext";
-import Cart from "@/components/cart/Cart";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const { cartCount } = useCart();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +26,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Frames", href: "/products/frames" },
     { name: "Albums", href: "/products/albums" },
     { name: "Mugs", href: "/products/mugs" },
@@ -54,7 +53,9 @@ const Navbar = () => {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-[11px] uppercase tracking-[0.3em] font-medium hover:text-neutral-500 transition-colors"
+                className={`text-[11px] uppercase tracking-[0.3em] font-medium transition-colors ${
+                  pathname === link.href ? "text-indigo-600" : "hover:text-neutral-500"
+                }`}
               >
                 {link.name}
               </Link>
@@ -66,27 +67,9 @@ const Navbar = () => {
              <button className="hover:scale-110 transition-transform hidden sm:block">
                 <Search size={20} strokeWidth={1.5} />
              </button>
-             {user ? (
-               <Link href="/orders" className="hover:scale-110 transition-transform flex items-center gap-2 group">
-                  <User size={20} strokeWidth={1.5} className="group-hover:text-neutral-500 transition-colors" />
-                  <span className="text-[9px] uppercase font-bold tracking-widest hidden md:block">Orders</span>
-               </Link>
-             ) : (
-               <Link href="/login" className="hover:scale-110 transition-transform">
-                  <User size={20} strokeWidth={1.5} />
-               </Link>
-             )}
-             <button 
-               onClick={() => setIsCartOpen(true)}
-               className="relative hover:scale-110 transition-transform"
-             >
-                <ShoppingBag size={20} strokeWidth={1.5} />
-                {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                    {cartCount}
-                  </span>
-                )}
-             </button>
+             <Link href="/login" className="hover:scale-110 transition-transform">
+                <User size={20} strokeWidth={1.5} />
+             </Link>
              <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden p-2">
                 <Menu size={24} strokeWidth={1.5} />
              </button>
@@ -116,8 +99,13 @@ const Navbar = () => {
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-4xl font-outfit uppercase tracking-tighter hover:pl-4 transition-all"
+                  className={`text-4xl font-outfit uppercase tracking-tighter hover:pl-4 transition-all relative ${
+                    pathname === link.href ? "pl-4 text-indigo-600" : "text-black"
+                  }`}
                 >
+                  {pathname === link.href && (
+                    <span className="absolute left-[-1rem] w-1.5 h-8 bg-[#6366F1] rounded-r" />
+                  )}
                   {link.name}
                 </Link>
               ))}
@@ -126,7 +114,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 };
