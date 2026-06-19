@@ -90,8 +90,8 @@ const ProductDetails = () => {
   );
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-20">
-      <div className="container-premium grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="bg-white min-h-screen pt-24 md:pt-32 pb-10 md:pb-20">
+      <div className="container-premium grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20">
         
         {/* Left: Cinematic Visuals */}
         <div className="space-y-8">
@@ -99,12 +99,12 @@ const ProductDetails = () => {
              initial={{ opacity: 0, scale: 1.1 }}
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 1.5 }}
-             className="aspect-[4/5] bg-neutral-50 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-20"
+             className="aspect-[4/5] bg-neutral-50 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl flex items-center justify-center p-8 md:p-20"
            >
               <img src={customImage || activeImage || product.image} alt={product.name} className="w-full h-full object-contain mix-blend-multiply hover:scale-110 transition-transform duration-1000" />
            </motion.div>
            
-           <div className="grid grid-cols-3 gap-6">
+           <div className="grid grid-cols-4 md:grid-cols-3 gap-3 md:gap-6">
               {(product.images?.length > 0 ? product.images : [{ url: product.image, public_id: "default" }]).map((img: any, i: number) => (
                 <div 
                   key={i} 
@@ -120,10 +120,10 @@ const ProductDetails = () => {
         </div>
 
         {/* Right: Refined Controls */}
-        <div className="flex flex-col justify-start space-y-12">
-           <div className="space-y-4">
+        <div className="flex flex-col justify-start space-y-8 md:space-y-12">
+           <div className="space-y-3 md:space-y-4">
               <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-neutral-400">Exclusive Gifting</span>
-              <h1 className="text-5xl md:text-6xl font-outfit font-bold tracking-tighter leading-tight">{product.name}</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-outfit font-bold tracking-tighter leading-tight">{product.name}</h1>
               <div className="flex items-center gap-6">
                  <span className="text-3xl font-outfit font-bold silver-text-gradient">₹{selectedSize ? selectedSize.price : product.startingPrice}</span>
                  <div className="px-3 py-1 bg-black text-white text-[9px] uppercase tracking-widest font-bold">Premium Protocol</div>

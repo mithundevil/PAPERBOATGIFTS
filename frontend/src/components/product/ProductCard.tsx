@@ -31,7 +31,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col justify-between items-center text-center p-8 bg-neutral-50 hover:bg-white transition-all duration-700 rounded-2xl border border-neutral-100/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 h-full"
+      className="group relative flex flex-col justify-between items-center text-center p-4 md:p-8 bg-neutral-50 hover:bg-white transition-all duration-700 rounded-2xl border border-neutral-100/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1 h-full"
     >
       <Link href={`/product/${product._id}`} className="w-full flex-grow flex flex-col">
         <div className="aspect-[4/5] w-full overflow-hidden bg-white rounded-xl mb-6 flex items-center justify-center p-8 relative flex-shrink-0">
@@ -55,7 +55,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
          <span className="text-xs uppercase tracking-widest text-neutral-400 font-medium">From <span className="text-sm font-bold tracking-tighter text-black font-outfit">₹{product.startingPrice}</span></span>
          <button 
            onClick={handleWhatsAppOrder}
-           className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all duration-300 py-3 px-4 rounded-xl font-outfit font-bold text-[10px] tracking-[0.15em] uppercase flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+           className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all duration-300 py-2.5 md:py-3 px-3 md:px-4 rounded-xl font-outfit font-bold text-[9px] md:text-[10px] tracking-[0.1em] md:tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 md:gap-2 shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
            title="Order via WhatsApp"
          >
            <MessageCircle size={14} className="fill-white stroke-none" />

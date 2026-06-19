@@ -53,21 +53,21 @@ const Testimonials = () => {
        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center space-y-4 mb-20">
+          <div className="text-center space-y-4 mb-10 md:mb-20">
              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em]">
                 <Sparkles size={12} /> Social Resonance
              </div>
-             <h2 className="text-4xl lg:text-6xl font-black tracking-tighter uppercase">Artisanal <span className="text-neutral-500 font-light italic">Narratives</span></h2>
+             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase">Artisanal <span className="text-neutral-500 font-light italic">Narratives</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
              {feedbacks.map((fb, idx) => (
                 <motion.div
                   key={fb._id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white/5 border border-white/5 p-10 rounded-[2.5rem] relative group hover:border-indigo-500/30 transition-all duration-500"
+                  className="bg-white/5 border border-white/5 p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] relative group hover:border-indigo-500/30 transition-all duration-500"
                 >
                    <Quote className="absolute top-8 right-8 text-indigo-500/20 w-12 h-12 group-hover:text-indigo-500/40 transition-colors" />
                    

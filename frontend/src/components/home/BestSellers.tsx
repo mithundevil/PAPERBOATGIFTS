@@ -37,13 +37,13 @@ const BestSellers = () => {
   return (
     <div className="section-spacing bg-[#FAFAFA]">
       <div className="container-premium">
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center space-y-3 md:space-y-4 mb-10 md:mb-20">
            <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-neutral-400">Pure Distinction</span>
-           <h2 className="text-5xl md:text-6xl font-outfit font-bold tracking-tighter">Bespoke Favorites</h2>
-           <p className="text-neutral-500 font-light max-w-xl mx-auto">Discover the pieces that defined elegance this season, curated by our master craftsmen.</p>
+           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-outfit font-bold tracking-tighter">Bespoke Favorites</h2>
+           <p className="text-neutral-500 font-light max-w-xl mx-auto px-4">Discover the pieces that defined elegance this season, curated by our master craftsmen.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
            {products.map((p, idx) => (
              <motion.div
                key={p._id}

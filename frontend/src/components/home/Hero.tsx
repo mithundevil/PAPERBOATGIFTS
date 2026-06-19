@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-white">
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white py-24 md:py-0">
       {/* Background with slight grid or dots for luxury feel */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
@@ -17,18 +17,18 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-6"
+          className="space-y-5"
         >
           <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-neutral-400">Memory Curated Excellence</span>
-          <h1 className="text-6xl md:text-8xl font-outfit font-bold tracking-tighter leading-[1] max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-outfit font-bold tracking-tighter leading-[1] max-w-4xl mx-auto">
             Turn Your Memories Into <span className="silver-text-gradient">Timeless Gifts</span>
           </h1>
-          <p className="text-lg text-neutral-500 font-light max-w-2xl mx-auto tracking-tight leading-relaxed">
+          <p className="text-base md:text-lg text-neutral-500 font-light max-w-2xl mx-auto tracking-tight leading-relaxed px-2">
             Every moment holds a story worth telling. Discover our bespoke collection of handcrafted frames, albums, and personalized keepsakes.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-            <Link href="/products/frames" className="btn-luxury group flex items-center gap-4 cursor-pointer">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-8">
+            <Link href="/products/frames" className="btn-luxury group flex items-center gap-4 cursor-pointer w-full sm:w-auto justify-center">
               <span>Shop Now</span>
               <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
             </Link>
@@ -61,8 +61,8 @@ const Hero = () => {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-         <div className="w-[1px] h-12 bg-gradient-to-t from-black to-transparent" />
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden sm:flex">
+         <div className="w-[1px] h-8 md:h-12 bg-gradient-to-t from-black to-transparent" />
          <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Scroll</span>
       </div>
     </div>

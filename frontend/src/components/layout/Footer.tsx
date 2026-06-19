@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-16 mt-auto">
       <div className="container-premium">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
-          <div className="space-y-8 md:col-span-1">
-            <Link href="/" className="text-3xl font-outfit font-bold tracking-tighter">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-20">
+          <div className="space-y-4 md:space-y-8 col-span-2 md:col-span-1">
+            <Link href="/" className="text-2xl md:text-3xl font-outfit font-bold tracking-tighter">
               PAPERBOAT<span className="font-light">GIFTS</span>
             </Link>
             <p className="text-sm text-neutral-400 max-w-xs leading-relaxed">

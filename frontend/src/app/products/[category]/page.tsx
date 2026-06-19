@@ -39,29 +39,29 @@ const CategoryPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Category Header */}
-      <div className="pt-40 pb-20 border-b border-neutral-100">
-         <div className="container-premium space-y-4">
+      <div className="pt-28 md:pt-40 pb-10 md:pb-20 border-b border-neutral-100">
+         <div className="container-premium space-y-3 md:space-y-4">
             <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-neutral-400">Gallery</span>
-            <div className="flex flex-col md:flex-row justify-between items-baseline gap-4">
-               <h1 className="text-5xl md:text-7xl font-outfit font-bold tracking-tighter capitalize">{category} Collection</h1>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-baseline gap-2 md:gap-4">
+               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-outfit font-bold tracking-tighter capitalize">{category} Collection</h1>
                <span className="text-sm font-light text-neutral-500">{products.length} Items Available</span>
             </div>
          </div>
       </div>
 
-      <div className="container-premium py-20">
+      <div className="container-premium py-10 md:py-20">
         {loading ? (
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
              {[1,2,3,4,5,6,7,8].map(i => (
                <ProductCardSkeleton key={i} />
              ))}
            </div>
         ) : products.length === 0 ? (
-          <div className="text-center py-40 border-2 border-dashed border-neutral-100 rounded-3xl">
+          <div className="text-center py-20 md:py-40 border-2 border-dashed border-neutral-100 rounded-3xl">
              <p className="text-neutral-400 uppercase tracking-widest">Collection empty</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
             {products.map((p, idx) => (
               <motion.div
                 key={p._id}

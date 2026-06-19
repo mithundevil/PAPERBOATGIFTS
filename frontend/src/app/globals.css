@@ -43,11 +43,11 @@ body {
 }
 
 @utility section-spacing {
-  @apply py-32 md:py-48;
+  @apply py-16 md:py-32 lg:py-48;
 }
 
 @utility container-premium {
-  @apply max-w-7xl mx-auto px-10 md:px-20;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20;
 }
 
 .luxury-gradient {
