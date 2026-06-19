@@ -55,11 +55,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
          <span className="text-xs uppercase tracking-widest text-neutral-400 font-medium">From <span className="text-sm font-bold tracking-tighter text-black font-outfit">₹{product.startingPrice}</span></span>
          <button 
            onClick={handleWhatsAppOrder}
-           className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all duration-300 py-2.5 md:py-3 px-3 md:px-4 rounded-xl font-outfit font-bold text-[9px] md:text-[10px] tracking-[0.1em] md:tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 md:gap-2 shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+           className="w-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-all duration-300 py-1.5 md:py-3 px-2 md:px-4 rounded-lg md:rounded-xl font-outfit font-bold text-[8px] md:text-[10px] tracking-[0.05em] md:tracking-[0.15em] uppercase flex items-center justify-center gap-1 md:gap-2 shadow-[0_4px_12px_rgba(37,211,102,0.2)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
            title="Order via WhatsApp"
          >
-           <MessageCircle size={14} className="fill-white stroke-none" />
-           <span>Order on WhatsApp</span>
+           <MessageCircle size={10} className="fill-white stroke-none md:hidden" />
+           <MessageCircle size={14} className="fill-white stroke-none hidden md:block" />
+           <span className="md:hidden">Order</span>
+           <span className="hidden md:inline">Order on WhatsApp</span>
          </button>
       </div>
     </motion.div>
